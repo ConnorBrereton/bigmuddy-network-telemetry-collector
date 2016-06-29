@@ -19,32 +19,24 @@
  * ----------------------------------------------------------------------------
  */
 
-syntax = "proto2";
+import "google/protobuf/any.proto";
+
+syntax = "proto3";
 
 import "google/protobuf/descriptor.proto";
 
 message CiscoMessageOptions {
     optional string schema_path = 1;
+    repeated google.protobuf.Any cisco_msg = 29051;
 }
 
 message CiscoFieldOptions {
     optional string name = 1;
     optional string path_element = 2;
+    repeated google.protobuf.Any cisco_field = 29052;
 }
 
 message CiscoFileOptions {
     optional string metadata = 1;
+    repeated google.protobuf.Any cisco_file = 29053;
 }
-
-extend google.protobuf.MessageOptions {
-    optional CiscoMessageOptions cisco_msg = 29051;
-}
-
-extend google.protobuf.FieldOptions {
-    optional CiscoFieldOptions cisco_field = 29052;
-}
-
-extend google.protobuf.FileOptions {
-    optional CiscoFileOptions cisco_file = 29053;
-}
-
